@@ -4,6 +4,8 @@ import com.parse.ParseClassName
 import com.parse.ParseFile
 import com.parse.ParseObject
 import com.parse.ParseUser
+import java.time.LocalDate
+import java.util.*
 
 @ParseClassName("Post")
 class Post : ParseObject() {
@@ -27,10 +29,17 @@ class Post : ParseObject() {
     fun setUser(user: ParseUser) {
         put(KEY_USER, user)
     }
+    fun getCreated(): Date?{
+        return getDate(KEY_CREATED)
+    }
+    fun setCreated(date: Date){
+        put(KEY_CREATED, date)
+    }
 
     companion object {
         const val KEY_DESCRIPTION = "description"
         const val KEY_IMAGE = "image"
         const val KEY_USER = "user"
+        const val KEY_CREATED = "created"
     }
 }
